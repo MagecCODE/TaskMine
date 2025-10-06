@@ -1,0 +1,7 @@
+{
+  "name": "taskMine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

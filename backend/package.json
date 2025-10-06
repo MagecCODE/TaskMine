@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "TaskMine is a modern cross-platfrom task management (To-Do-List) apliccation designer to simplify and optimize personal and profesional organization. Inspired by the efficiency of card-based desing, it offers a visual and intuitive interface..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Alonso Viera",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.1",
+    "sequelize": "^6.37.7"
+  }
+}
