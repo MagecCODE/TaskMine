@@ -13,17 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <!--
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  -->
+<!-- Card Task -->
+  <ion-card 
+  class="task-card" 
+  *ngFor="let task of tasksList">
+    <ion-card-header>
+      <ion-card-title class="car-tittle">{{task.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="card-content">
+      {{task.task}}
+    </ion-card-content>
+  </ion-card>
 
+  <!-- ** Options Float Button ** -->  
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
-      <ion-icon name="chevron-up-circle"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button>
@@ -37,4 +42,5 @@
       </ion-fab-button>    
     </ion-fab-list>
   </ion-fab>
+
 </ion-content>

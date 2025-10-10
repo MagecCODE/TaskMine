@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             defaultValue: 0,
             maxValue: 3,
-            minValue: 0
+            minValue: 1
         },
         status: {       
             type: Sequelize.BOOLEAN,

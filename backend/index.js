@@ -30,7 +30,7 @@ db.sequelize.sync({ force: true }).then(() => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.json({ message: 'Bienvenido a TaskMine' });
+    res.json({ message: 'Bienvenid@ a TaskMine' });
 });
 
 require("./routes/task.routes")(app);

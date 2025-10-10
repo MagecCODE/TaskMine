@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -12,8 +12,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'add-task',
-    loadChildren: () => import('./add-task/add-task.module').then( m => m.AddTaskPageModule)
+    path: 'task-form',
+    loadChildren: () => import('./pages/task-form/task-form.module').then( m => m.TaskFormPageModule)
   },
 ];
 
