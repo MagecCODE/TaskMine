@@ -14,21 +14,25 @@ export class HomePage implements OnInit {
   tasksList : any=[];
 
   constructor(private router: Router, 
-              private taskServices : TaskService) {  
+              private taskServices : TaskService) {      
     //Eventlistener to reload data
     this.router.events.subscribe((event)=>{
       if(event instanceof NavigationEnd ){
         this.getAllTasks();
       }
     });
+    
   };
 
   ngOnInit() {
-    this.getAllTasks();
+    //Settimeout to not duplicated data
+    setTimeout(() => this.getAllTasks(), 100);
   }
 
   // Service calls
   getAllTasks() {
+    // Clean array to not duplicated data
+    this.tasksList = [];
     this.taskServices.getTasks().subscribe((res: any) => {
       this.tasksList = res;
       console.log(this.tasksList);
@@ -45,7 +49,12 @@ export class HomePage implements OnInit {
     });
   };
 
-
+  doTask(task:any){
+    const newStatus = !task.status
+    this.taskServices.updateStatus(task.id,newStatus).subscribe(()=>{
+      task.status=newStatus;
+    }, error =>{console.log('Error to updte status: ', error)});
+  };
 
   // Routes Task Form
   newTask() {

@@ -7,10 +7,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
         },
         priority: {
-            type: Sequelize.INTEGER,
-            defaultValue: 0,
-            maxValue: 3,
-            minValue: 1
+            type: Sequelize.ENUM("Importante", "Normal", "No importante"),
+            defaultValue: "Normal"
         },
         status: {       
             type: Sequelize.BOOLEAN,

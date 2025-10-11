@@ -11,6 +11,8 @@ module.exports = app => {
     router.get("/:id", tasks.findOne);
     // Update a Task with id
     router.put("/:id", tasks.update);
+    // Update a Task whith id and status
+    router.put("/:id/status",tasks.updateStatus);
     // Delete a Task with id
     router.delete("/:id", tasks.delete);
     // Delete all Tasks

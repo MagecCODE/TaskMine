@@ -40,9 +40,13 @@ export class TaskFormPage implements OnInit {
   };
 
   // Method and service call
-  onSubmit() {};
-
-
+  onSubmit() {
+    if(this.taskId && this.isEditMode ){
+      this.saveChanges();
+    }else{
+      this.createTask();
+    };
+  };
 
   createTask(){
     if(this.taskForm.valid){
@@ -77,7 +81,5 @@ export class TaskFormPage implements OnInit {
   };
 
   // Clean Form
-  getFrommControl(field: string){
-    return this.taskForm.get(field);
-  };
+
 }

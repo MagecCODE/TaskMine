@@ -1,15 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="ion-text-center">
-      TaskMine
-    </ion-title>
+  <ion-toolbar>  
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-between">
+        <ion-col>
+          <ion-title class="title-app">TaskMine</ion-title>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-avatar class="custom-avatar">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
   </ion-toolbar>
 </ion-header>
 
 <ion-content  [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">TaskMine App</ion-title>
+      <ion-title size="large">TaskMine</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -17,12 +26,41 @@
   <ion-card 
   class="task-card" 
   *ngFor="let task of tasksList">
+
     <ion-card-header>
-      <ion-card-title class="car-tittle">{{task.title}}</ion-card-title>
+      <ion-card-title class="car-tittle">{{task.title | uppercase}}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="card-content">
       {{task.task}}
     </ion-card-content>
+    <ion-footer>
+      <ion-grid class="card-footer-content">
+        <ion-row class="ion-align-items-center ion-justify-content-between">
+          <ion-col size="auto">
+            <ion-button fill="clear" (click)="doTask(task)">
+              <ion-icon 
+              name="thumbs-up-outline" 
+              aria-label="Status" 
+              [color]="task.status ? 'primary' : 'dark'">
+            </ion-icon>             
+            </ion-button>  
+            <div>{{task.status ? 'Realizada':'Pendiente'}}</div>         
+          </ion-col>
+          <ion-col size="auto">
+            <ion-button fill="clear" (click)="updateTask(task.id)">
+              <ion-icon name="construct-outline" aria-label="Modificar" color="tertiary"></ion-icon>              
+            </ion-button>  
+            <div>Modificar</div>           
+          </ion-col>
+          <ion-col size="auto">  
+            <ion-button fill="clear" (click)="deleteTask(task.id)">
+              <ion-icon slot="icon-only" name="trash-outline" color="danger"></ion-icon>
+            </ion-button>            
+            <div>Eliminar</div>         
+          </ion-col>       
+        </ion-row>
+      </ion-grid> 
+    </ion-footer>
   </ion-card>
 
   <!-- ** Options Float Button ** -->  

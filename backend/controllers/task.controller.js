@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Task = db.tasks;
 const Op = db.Sequelize.Op;
@@ -71,7 +72,7 @@ exports.findOne = (req, res) => {
 
 // Update a Task by the id in the request
 exports.update = (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id;    
 
     Task.update(req.body, {
         where: { id: id }
@@ -84,6 +85,32 @@ exports.update = (req, res) => {
         }else{
             res.send({
                 message: `Cannot update Task with id=${id}. Maybe Task was not found or req.body is empty!`
+            }); 
+        };
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: `Error updating Task with id=${id}`
+        });
+    });
+};
+
+// Update a Task by the id and status in the request
+exports.updateStatus = (req,res) =>{
+    const id = req.params.id;
+    const {status} = req.body;
+
+    Task.update({ status }, {
+        where:{ id:id }
+    })
+    .then(num => {
+        if (num ==1){
+            res.send({
+                message: "Task status update successfully."
+            });
+        }else{
+            res.send({
+                message: `Cannot update status of Task with id=${id}. Maybe Task was not found or req.body is empty!`
             }); 
         };
     })
