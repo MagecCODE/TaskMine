@@ -56,6 +56,26 @@ export class HomePage implements OnInit {
     }, error =>{console.log('Error to updte status: ', error)});
   };
 
+  // Methods for styling card colors
+  getPriorityColor(priority: any){
+    switch (priority.toLowerCase().trim()) {
+      case 'importante':
+        return 'danger';
+      case 'no importante':
+        return 'success';
+      default:
+        return 'primary';
+    };
+  };
+
+  getStatusLabel(task: any) {
+    return task.status ? 'Realizada' : 'Pendiente';
+  };
+
+  getStatusColor(task: any) {
+    return task.status ? 'primary' : 'dark';
+  };
+
   // Routes Task Form
   newTask() {
     this.router.navigateByUrl('/task-form');

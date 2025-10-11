@@ -2,7 +2,7 @@ ion-content{
   --background: lightgray;
 }
 
-// Headers Styles
+// Card Headers Styles
 .title-app{
   font-size: 30px;
   color:darkgrey;
@@ -14,7 +14,17 @@ ion-content{
   ion-icon{font-size: 50px;};
 };
 
-//Footer Styler
+.priority-badge[color="success"] {
+  color: white;
+};
+
+// Card Content Style
+.card-content{
+  height: 50px;
+  font-size: 16px;
+};
+
+// Card Footer Styler
 .card-footer-content{
   ion-icon{
     font-size:20px; 

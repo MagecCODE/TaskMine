@@ -47,7 +47,7 @@ TaskMine esta contruido con las siguentes tecnologías.
 
 TaskMine ha sido realizada por un solo autor,  yo.
 
-* **Samuel ALonso** - *Desarrollador Full-Stack* - [S@Mu](https://github.com/MagecCODE) 
+* **Samuel Alonso** - *Desarrollador Full-Stack* - [S@Mu](https://github.com/MagecCODE) 
 
 ## Licencia 📄
 

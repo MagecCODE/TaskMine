@@ -47,7 +47,7 @@ TaskMine is built with the following technologies.
 
 TaskMine has been developed by a single author—me.
 
-* **Samuel ALonso** - *Full-Stack Developer* - [S@Mu](https://github.com/MagecCODE) 
+* **Samuel Alonso** - *Full-Stack Developer* - [S@Mu](https://github.com/MagecCODE) 
 
 ## License 📄
 
