@@ -19,6 +19,19 @@ Desde la terminal una vez instalado NodeJs ejecutamos el siguiente comando para 
 ```
 $ npm install -g @ionic/cli
 ```
+Al clonar el repositorio en el directorio local hay que tener en cuenta las variables de entorno para la instalación de la base de datos.
+En el repositorio hay subido un archivo .env.ejemplo, haremos lo siguiente:
+
+* 1- Hacer una copia del archivo y renombrarlo sencillamente a .env; debido a que el original está el archivo .gitignore
+* 2- Dentro estan las variables de entorno, que están vinculadas al archivo db_config.js en el backend, en la carpeta de config. Sustituimos los valores por los datos que tenngas en tu entorno de desarrollo y en tu gestor de base de datos.
+* 3- En la terminal nos situaremos en el directorio del /backend general, y ejecutaremos el siguiente comando para instalar los paquete necesario para la interpretación d elas variables de entorno y de los archivos .env :
+```
+$ npm install dotenv
+```
+* 4- Por ultimo si en caso de al clonar el repositorio surgiera algun fallo y al hacer estos pasos no funcione la base de datos con las variables de entorno, coprueba que en el archivo db_config.js este el requerimiento del dotenv, sino es así copia este comando y ponlo al principio del archivo:  
+```
+ require('dotenv').config();
+ ```
 
 ## Ejecutando pruebas en API por Postman⚙️
 

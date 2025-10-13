@@ -20,6 +20,19 @@ From the terminal, once NodeJS is installed, run the following command to instal
 $ npm install -g @ionic/cli
 ```
 
+When cloning the repository into your local directory, you need to consider the environment variables for setting up the database. In the repository, there's a file named .env.example. Follow these steps:
+
+* 1- Make a copy of the file and rename it to .env, since the original is listed in the .gitignore file
+* 2- Inside, you'll find the environment variables, which are linked to the db_config.js file located in the config folder of the backend. Replace the values with those specific to your development environment and database manager.
+* 3- In the terminal, navigate to the general /backend directory and run the following command to install the necessary package for interpreting environment variables and .env files:
+```
+$ npm install dotenv
+```
+* 4- - Finally, if cloning the repository causes any issues and the database doesn't work with the environment variables after following these steps, check that the db_config.js file includes the dotenv requirement. If it doesn't, add the following line at the top of the file:
+```
+ require('dotenv').config();
+ ```
+
 ## Running API Tests with Postman ⚙️
 
 From the provided link, you can access the various API endpoints to run your tests. Don’t forget to install a database manager like MySQL or MySQL WorkBench.
