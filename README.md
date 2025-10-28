@@ -1,4 +1,5 @@
 # TaskMine 
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/MagecCODE/TaskMine/blob/main/README-english.md)
 
 Bienvenid@ a TaskMine, es una app multiplataformas de código abierto, sencilla e intuitiva para el manejo de tareas diarias.
 
