@@ -1,4 +1,5 @@
 # TaskMine
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/MagecCODE/TaskMine/blob/main/README-spanish.md)
 
 Welcome to TaskMine, an open-source, cross-platform app that’s simple and intuitive for managing daily tasks.
 

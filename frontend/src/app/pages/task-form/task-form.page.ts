@@ -10,6 +10,7 @@ import {TaskService} from '../../services/task-service';
   styleUrls: ['./task-form.page.scss'],
   standalone: false
 })
+
 export class TaskFormPage implements OnInit {
 
   taskForm: FormGroup;
