@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TaskService } from '../../services/task-service';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { TaskService } from '../../services/task-service';
 
 export class HomePage implements OnInit {
 
-  tasksList : any=[];
+  tasksList : Array<Task> = [];
 
   constructor(private router: Router, 
               private taskServices : TaskService) {      
@@ -32,7 +33,6 @@ export class HomePage implements OnInit {
   // Service calls
   getAllTasks() {
     // Clean array to not duplicated data
-    this.tasksList = [];
     this.taskServices.getTasks().subscribe((res: any) => {
       this.tasksList = res;
       console.log(this.tasksList);
@@ -49,33 +49,13 @@ export class HomePage implements OnInit {
     });
   };
 
-  doTask(task:any){
+  doTask(task:Task){
     const newStatus = !task.status
     this.taskServices.updateStatus(task.id,newStatus).subscribe(()=>{
       task.status=newStatus;
     }, error =>{console.log('Error to updte status: ', error)});
   };
-
-  // Methods for styling card colors
-  getPriorityColor(priority: any){
-    switch (priority.toLowerCase().trim()) {
-      case 'importante':
-        return 'danger';
-      case 'no importante':
-        return 'success';
-      default:
-        return 'primary';
-    };
-  };
-
-  getStatusLabel(task: any) {
-    return task.status ? 'Realizada' : 'Pendiente';
-  };
-
-  getStatusColor(task: any) {
-    return task.status ? 'primary' : 'dark';
-  };
-
+  
   // Routes Task Form
   newTask() {
     this.router.navigateByUrl('/task-form');

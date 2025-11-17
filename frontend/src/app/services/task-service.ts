@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { config } from '../models/config';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-
-  endpoint = 'http://localhost:8080/api/tasks';
+  private endpoint = `${config.apiUrl}/tasks`;
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class TaskService {
   };
   
   // Create a new task
-  create(task: any) {
+  create(task: Task) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
@@ -34,7 +35,7 @@ export class TaskService {
   }
 
   // Update task
-  update(id: any, task: any){
+  update(id: any, task: Task){
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });

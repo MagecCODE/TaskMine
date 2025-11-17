@@ -1,0 +1,59 @@
+<!-- ** Card Task ** -->
+<ion-card 
+class="task-card"
+*ngFor="let task of tasksList">
+    <!-- * Card Header * -->
+    <ion-card-header>
+        <ion-card-subtitle>
+            <ion-badge 
+            class="priority-badge" 
+            [color]="getPriorityColor(task.priority)">
+                {{ task.priority }}
+            </ion-badge>
+        </ion-card-subtitle>
+        <ion-card-title class="car-title">{{task.title | uppercase}}</ion-card-title>
+    </ion-card-header>
+
+    <!-- * Card Content * -->
+    <ion-card-content class="card-content">
+        {{task.task}}
+    </ion-card-content>
+
+    <!-- * Card Footer * -->
+    <ion-footer class="card-footer">
+        <ion-grid class="card-footer-content">
+            <ion-row class="ion-align-items-center ion-justify-content-between">
+                <ion-col size="auto">
+                    <ion-button fill="clear" (click)="doTask.emit(task)">
+                        <ion-icon
+                        slot="icon-only" 
+                        name="thumbs-up-outline" 
+                        aria-label="Status"
+                        [color]="getStatusColor(task)"/>
+                    </ion-button>
+                    <div>{{ getStatusLabel(task) }}</div>
+                </ion-col>
+                <ion-col size="auto">
+                    <ion-button fill="clear" (click)="updateTask.emit(task.id)">
+                        <ion-icon 
+                        slot="icon-only" 
+                        name="construct-outline" 
+                        aria-label="Modificar task"
+                        color="tertiary"/>
+                    </ion-button>
+                    <div>Modificar</div>
+                </ion-col>
+                <ion-col size="auto">
+                    <ion-button fill="clear" (click)="deleteTask.emit(task.id)">
+                        <ion-icon 
+                        slot="icon-only" 
+                        name="trash-outline" 
+                        aria-label="Eliminar task"
+                        color="danger"/>
+                    </ion-button>
+                    <div>Eliminar</div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-footer>
+</ion-card>

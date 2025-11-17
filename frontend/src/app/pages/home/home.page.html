@@ -6,9 +6,11 @@
           <ion-title class="title-app">TaskMine</ion-title>
         </ion-col>
         <ion-col size="auto">
-          <ion-avatar class="custom-avatar">
-            <ion-icon name="person-circle-outline"></ion-icon>
-          </ion-avatar>
+          <ion-menu-toggle auto-hide="false" menu="userMenu">
+            <ion-avatar class="custom-avatar">
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </ion-avatar>
+          </ion-menu-toggle>
         </ion-col>
       </ion-row>
     </ion-grid>  
@@ -22,75 +24,17 @@
     </ion-toolbar>
   </ion-header>
 
-<!-- ** Card Task ** -->
-  <ion-card 
-  class="task-card" 
-  *ngFor="let task of tasksList">
-  
-    <!-- * Card Header * -->
-    <ion-card-header>
-      <ion-card-subtitle>            
-        <ion-badge 
-        class="priority-badge"
-        [color]="getPriorityColor(task.priority)">
-          {{ task.priority }}
-        </ion-badge>
-      </ion-card-subtitle>
-      <ion-card-title class="car-title">{{task.title | uppercase}}</ion-card-title>            
- 
-    </ion-card-header>
-  
-    <!-- * Card Content * -->
-    <ion-card-content class="card-content">
-      {{task.task}}
-    </ion-card-content>
-    <ion-footer class="card-footer">
-      <ion-grid class="card-footer-content">
-        <ion-row class="ion-align-items-center ion-justify-content-between">
-          <ion-col size="auto">
-            <ion-button fill="clear" (click)="doTask(task)">
-              <ion-icon
-              slot="icon-only" 
-              name="thumbs-up-outline" 
-              aria-label="Status" 
-              [color]="getStatusColor(task)">
-            </ion-icon>             
-            </ion-button>  
-            <div>{{ getStatusLabel(task) }}</div>         
-          </ion-col>
-          <ion-col size="auto">
-            <ion-button fill="clear" (click)="updateTask(task.id)">
-              <ion-icon slot="icon-only" name="construct-outline" aria-label="Modificar task" color="tertiary"></ion-icon>              
-            </ion-button>  
-            <div>Modificar</div>           
-          </ion-col>
-          <ion-col size="auto">  
-            <ion-button fill="clear" (click)="deleteTask(task.id)">
-              <ion-icon slot="icon-only" name="trash-outline" aria-label="Eliminar task" color="danger"></ion-icon>
-            </ion-button>            
-            <div>Eliminar</div>         
-          </ion-col>       
-        </ion-row>
-      </ion-grid> 
-    </ion-footer>
-  </ion-card>
+  <!-- ** Card Task Component ** -->
+  <app-task-card 
+  [tasksList]="tasksList"
+  (doTask)="doTask($event)"
+  (updateTask)="updateTask($event)"
+  (deleteTask)="deleteTask($event)"/>
 
   <!-- ** Options Float Button ** -->  
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">    
+      <ion-fab-button color="tertiary">
         <ion-icon name="add" (click)="newTask()"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="share"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="logo-whatsapp"></ion-icon>
-      </ion-fab-button>    
-    </ion-fab-list>
   </ion-fab>
-
 </ion-content>
