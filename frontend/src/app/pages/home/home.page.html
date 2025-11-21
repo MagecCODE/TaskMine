@@ -15,8 +15,13 @@
         <ion-col size="auto">
           <ion-menu-toggle auto-hide="false" menu="userMenu">
             <ion-avatar class="custom-avatar">
-              <ion-icon name="person-circle-outline"></ion-icon>
-            </ion-avatar>
+              <!-- Profile image -->               
+              <ion-img [src]="user.filename || 'assets/images/No-Image-Placeholder.svg'" alt="image"/>
+              <!-- Defaulto profile image-->
+              <ng-template #defaultIcon>
+              <ion-icon name="person-circle-outline"/>
+              </ng-template>  
+            </ion-avatar>           
           </ion-menu-toggle>
         </ion-col>
       </ion-row>

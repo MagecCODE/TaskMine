@@ -20,7 +20,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: true
 
-        }  
+        },  
+        filename:{
+            type: Sequelize.STRING,
+        }            
     });
     return User;
 };

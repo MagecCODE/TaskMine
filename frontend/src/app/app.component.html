@@ -15,7 +15,7 @@
             <ion-button fill="clear">
               <ion-icon slot="icon-only" name="home-outline" aria-label="Home"/>              
             </ion-button>
-            <ion-text>Inicio</ion-text>            
+            <ion-text>Tasks</ion-text>            
           </ion-item>
         </ion-menu-toggle>
 
@@ -24,16 +24,16 @@
             <ion-button fill="clear">
                 <ion-icon slot="icon-only" name="checkmark-done-outline" aria-label="end-tasks"/>              
             </ion-button>
-            <ion-text>Tareas finalizadas</ion-text>
+            <ion-text>Tasks finalizadas</ion-text>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
-          <ion-item >
+          <ion-item (click)="changeProfilePhoto()">
             <ion-button fill="clear">
-              <ion-icon slot="icon-only" name="camera-outline" aria-label="profile-photo" routerLink="/profile-photo"/>              
+              <ion-icon slot="icon-only" name="camera-outline" aria-label="profile-photo" />              
             </ion-button>            
-            <ion-text>Foto Perfil</ion-text>
+            <ion-text>Cambiar Foto Perfil</ion-text>
           </ion-item>
         </ion-menu-toggle>
 

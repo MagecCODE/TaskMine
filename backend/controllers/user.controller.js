@@ -19,9 +19,12 @@ exports.create = (req, res) => {
     name: req.body.name,
     username: req.body.username,
     password: req.body.password,
-    email : req.body.email
+    email : req.body.email,
+    filename: req.file ? req.file.filename : ""
   };
+
   console.log("Usuario desde el controlador:",user);
+
   User.findOne({ where: { username: user.username } })
     .then(data => {
       if (data) {
@@ -62,7 +65,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
-
   User.findAll()
     .then(data => {
       return res.send(data);
@@ -131,3 +133,21 @@ exports.findUserByUsernameAndPassword = (req, res) => {
       });
     });
 };
+
+//Update profile photo
+exports.updatePhoto = async (req, res) => {
+  try {
+    const id = req.params.id;
+    
+    if (!req.file) {
+      return res.status(400).send({ message: "No file uploaded" });
+    }
+
+    await User.update({ filename: req.file.filename }, { where: { id } });
+
+    res.send({ message: "Profile photo updated successfully", filename: req.file.filename });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+

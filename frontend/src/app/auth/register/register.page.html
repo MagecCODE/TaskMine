@@ -24,12 +24,19 @@
     </ion-card-header> 
 
     <ion-card-content>
-      <form [formGroup]="userForm" (ngSubmit)="registerUser()">           
+      <form [formGroup]="userForm" (ngSubmit)="registerUser()">
+        <!--
+        Profile photo method
+        <ion-item (click)="profilePhoto()">
+          <ion-img class="photo-frame" *ngIf="capturePhoto" [src]="capturePhoto" (click)="profilePhoto()"/>
+          <ion-img class="photo-frame" *ngIf="!capturePhoto" src="../../assets/No-Image-Placeholder.svg" (click)="profilePhoto()"/>
+        </ion-item>
+        -->                 
         <ion-item>
           <ion-input  formControlName="name" type="text" placeholder="Name" required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input  formControlName="username" type="text" placeholder="UserName" required></ion-input>
+          <ion-input  formControlName="username" type="text" placeholder="User Name" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-input  formControlName="email" type="email" placeholder="your@email.com" required></ion-input>
@@ -39,7 +46,7 @@
         </ion-item>
         <ion-item>
           <ion-input formControlName="confirm" type="password" placeholder="Password again" required></ion-input>
-        </ion-item>
+        </ion-item>        
         <ion-button  color="tertiary"  size="large" type="submit" [disabled]="userForm.invalid" expand="block">Register</ion-button>    
       </form>
     </ion-card-content>           

@@ -3,15 +3,19 @@ require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
-
-// Initialize app
-const app = express();
+let path= require('path');
 
 // Set Ports
 const PORT = process.env.PORT || 8080;
 
+// Initialize app
+const app = express();
+
+// Use public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // CORS
-var corsOptions = {
+let corsOptions = {
     origin: "http://localhost:8100"
 };
 

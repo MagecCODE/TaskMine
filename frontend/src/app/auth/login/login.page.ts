@@ -30,8 +30,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {};
 
   loginUser() {
-    const {name,username,password,email}= this.loginForm.value;
-    let user: User = { name,username, password, email};
+    const {name,username,password,email, filename}= this.loginForm.value;
+    let user: User = { name,username, password, email, filename};
     
     this.authService.login(user).subscribe({
       next: (res) => {

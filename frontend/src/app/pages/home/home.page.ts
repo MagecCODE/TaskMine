@@ -14,6 +14,7 @@ import { Storage } from '@ionic/storage-angular';
 
 export class HomePage implements OnInit {
 
+  user:any ={};
   tasksList : Array<Task> = [];
   loading = true;
 
@@ -22,6 +23,8 @@ export class HomePage implements OnInit {
               private authService : AuthService,
               private storage : Storage
             ) {  
+    this.initStorage();
+    this.initUser();
 
     //Eventlistener to reload data
     this.router.events.subscribe((event)=>{
@@ -78,16 +81,6 @@ export class HomePage implements OnInit {
     });
   };
 
-  // Service calls
-  // async getAllTasks() {
-  //   // Clean array to not duplicated data
-  //   let token = await this.storage.get("token");
-  //   this.taskServices.getTasks(token).subscribe((res: any) => {
-  //     this.tasksList = res;
-  //     console.log(this.tasksList);
-  //   });
-  // };
-
   async updateTask(id:any){
     this.router.navigate([`/task-form/${id}`])
   };
@@ -111,4 +104,13 @@ export class HomePage implements OnInit {
   async newTask() {
     this.router.navigateByUrl('/task-form');
   };  
+
+  async initUser(){
+    await this.initStorage();
+    this.user = await this.storage.get("user");
+  };
+
+  async initStorage() {
+    await this.storage.create();    
+  };
 };
