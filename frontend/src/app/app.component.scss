@@ -1,10 +1,14 @@
 ion-title{
     font-size: 26px;
     font-weight: 400;
+    font-size: 28px;
+    font-weight: 400;
+    color: white
+
 };
 
 ion-icon svg {
-    stroke-width: 4;  
+    stroke-width: 5;  
 };
 
 // Botones
@@ -13,6 +17,9 @@ ion-item {
     text-align: center;
     gap: 4px; 
     color: var(--ion-color-tertiary);
+
+    cursor: pointer;
+
 
     ion-icon {
         font-size: 38px;   
