@@ -13,16 +13,16 @@
         <ion-menu-toggle auto-hide="true">
           <ion-item routerLink="/home">
             <ion-button fill="clear">
-              <ion-icon slot="icon-only" name="home-outline" aria-label="Home"></ion-icon>              
+              <ion-icon slot="icon-only" name="home-outline" aria-label="Home"/>              
             </ion-button>
             <ion-text>Inicio</ion-text>            
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
-          <ion-item>
+          <ion-item routerLink="/endtasks">
             <ion-button fill="clear">
-                <ion-icon slot="icon-only" name="checkmark-done-outline" aria-label="end-tasks" routerLink="/endtasks"></ion-icon>              
+                <ion-icon slot="icon-only" name="checkmark-done-outline" aria-label="end-tasks"/>              
             </ion-button>
             <ion-text>Tareas finalizadas</ion-text>
           </ion-item>
@@ -31,7 +31,7 @@
         <ion-menu-toggle auto-hide="true">
           <ion-item >
             <ion-button fill="clear">
-              <ion-icon slot="icon-only" name="camera-outline" aria-label="profile-photo" routerLink="/profile-photo"></ion-icon>              
+              <ion-icon slot="icon-only" name="camera-outline" aria-label="profile-photo" routerLink="/profile-photo"/>              
             </ion-button>            
             <ion-text>Foto Perfil</ion-text>
           </ion-item>
@@ -40,7 +40,7 @@
         <ion-menu-toggle auto-hide="true">
           <ion-item class="logout-btn" (click)="logout()" >
             <ion-button fill="clear" >
-              <ion-icon slot="icon-only" name="close-circle-outline" aria-label="Cerrar Sesión"></ion-icon>              
+              <ion-icon slot="icon-only" name="close-circle-outline" aria-label="Cerrar Sesión"/>              
             </ion-button>            
             <ion-text>Cerrar Sesión</ion-text>           
           </ion-item>
