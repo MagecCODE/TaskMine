@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {TaskService} from '../../services/task-service';
+import {TaskService} from '../../services/task/task-service';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TaskFormPage implements OnInit {
   constructor(private taskService: TaskService,
     private activedRoute: ActivatedRoute ,
     private router: Router,
+    private storage : Storage,
     public formBuilder: FormBuilder) {
 
       this.taskForm = this.formBuilder.group({
@@ -49,10 +51,11 @@ export class TaskFormPage implements OnInit {
     };
   };
 
-  createTask(){
+  async createTask(){
+    const token = await this.storage.get("token");
     if(this.taskForm.valid){
       console.log("Form Valid: ", this.taskForm.value);
-      this.taskService.create(this.taskForm.value).subscribe(res => {
+      this.taskService.create(this.taskForm.value,token).subscribe(res => {
         this.router.navigate(['/home']);
       });
     }else{
@@ -60,18 +63,19 @@ export class TaskFormPage implements OnInit {
     }
   };
 
-  saveChanges(){
+  async saveChanges(){
+    const token = await this.storage.get("token");
     const id = this.activedRoute.snapshot.paramMap.get('id');
-
     if(id){
-      this.taskService.update(+id, this.taskForm.value).subscribe(()=>{
+      this.taskService.update(+id, this.taskForm.value, token).subscribe(()=>{
         this.router.navigate(['/home']);
       });
     };
   };
 
-  loadTask(id:any){
-    this.taskService.getTaskById(id).subscribe((res:any)=>{
+  async loadTask(id:any){
+    const token = await this.storage.get("token");
+    this.taskService.getTaskById(id,token).subscribe((res:any)=>{
       console.log('Response data: ', res);
       this.taskForm.patchValue({
           title: res.title,
@@ -80,7 +84,4 @@ export class TaskFormPage implements OnInit {
       });
     });
   };
-
-  // Clean Form
-
-}
+};

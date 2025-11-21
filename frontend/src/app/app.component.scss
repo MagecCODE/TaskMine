@@ -1,0 +1,46 @@
+ion-title{
+    font-size: 26px;
+    font-weight: 400;
+};
+
+ion-icon svg {
+    stroke-width: 4;  
+};
+
+// Botones
+ion-item {
+    display: flex;
+    text-align: center;
+    gap: 4px; 
+    color: var(--ion-color-tertiary);
+
+    ion-icon {
+        font-size: 38px;   
+        color: var(--ion-color-tertiary);    
+    };
+
+    ion-text {
+        font-size: 14px;   
+        font-weight: 500;
+        color: #333;       
+    };
+
+    &:hover {
+        ion-icon {
+            transform: scale(1.16) translateX(-5px);; 
+            transition: transform 0.2s ease;
+        };
+        ion-text {
+            transform: scale(1.16) translateX(5px);; 
+            transition: transform 0.2s ease;
+            color: var(--ion-color-tertiary);
+        };
+    };
+};
+
+//Botón cerrar sesión
+.logout-btn {    
+    color: red; 
+    ion-icon{color: red;};
+    &:hover{ion-text{color: red};};    
+};

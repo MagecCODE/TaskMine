@@ -32,7 +32,8 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["localforage"]
           },
           "configurations": {
             "production": {
@@ -80,7 +81,7 @@
               "buildTarget": "app:build:development"
             },
             "ci": {
-              "progress": false
+              
             }
           },
           "defaultConfiguration": "development"
@@ -123,7 +124,7 @@
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
-          "options": {
+          "options": {            
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"

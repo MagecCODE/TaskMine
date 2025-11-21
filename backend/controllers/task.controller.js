@@ -8,7 +8,7 @@ exports.create = (req, res) => {
 
     // Validate request
     if (!req.body.title) {
-        res.status(400).send({
+        return res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
@@ -25,10 +25,10 @@ exports.create = (req, res) => {
     // Save Task in the database
     Task.create(task)
         .then(data => {
-            res.send(data);
+            return res.send(data);
         })
         .catch(err => {
-            res.status(500).send({
+            return res.status(500).send({
                 message:
                     err.message || "Some error occurred while creating the Task."
             });
@@ -36,18 +36,17 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tasks from the database.
-exports.findAll = (req, res) => {
-    Task.findAll()
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving tasks."
-            });
-        }); 
+exports.findAll = async (req, res) => {
+    try {
+        const tasks = await Task.findAll();
+        res.json(tasks);
+    } catch (err) {
+        console.error("Error en findAll:", err);
+        res.status(500).send({ message: "Error retrieving tasks" });
+    }
 };
+
+
 
 // Find a single Task with an id
 exports.findOne = (req, res) => {
@@ -56,15 +55,15 @@ exports.findOne = (req, res) => {
     Task.findByPk(id)
         .then(data => {
             if (data) {
-                res.send(data);
+                return res.send(data);
             } else {
-                res.status(404).send({
+                return res.status(404).send({
                     message: `Cannot find Task with id=${id}.`
                 });
             };
         })
         .catch((err) => {
-            res.status(500).send({
+            return res.status(500).send({
                 message: `Error retrieving Task with id=${id}`
             });
         });
@@ -79,17 +78,17 @@ exports.update = (req, res) => {
     }) 
     .then(num => {
         if (num ==1){
-            res.send({
+            return res.send({
                 message: "Task was update successfully."
             });
         }else{
-            res.send({
+            return res.send({
                 message: `Cannot update Task with id=${id}. Maybe Task was not found or req.body is empty!`
             }); 
         };
     })
     .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: `Error updating Task with id=${id}`
         });
     });
@@ -105,17 +104,17 @@ exports.updateStatus = (req,res) =>{
     })
     .then(num => {
         if (num ==1){
-            res.send({
+            return res.send({
                 message: "Task status update successfully."
             });
         }else{
-            res.send({
+            return res.send({
                 message: `Cannot update status of Task with id=${id}. Maybe Task was not found or req.body is empty!`
             }); 
         };
     })
     .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: `Error updating Task with id=${id}`
         });
     });
@@ -131,17 +130,17 @@ exports.delete = (req, res) => {
     })
     .then(num => {
         if (num == 1) {
-            res.send({
+            return res.send({
                 message: "Task was deleted successfully!"
             });
         } else {
-            res.send({
+            return res.send({
                 message: `Cannot delete Task with id=${id}. Maybe Task was not found!`
             });
         };
     })
     .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: `Could not delete Task with id=${id}`
         });
     });

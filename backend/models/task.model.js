@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Task = sequelize.define("task", {
+    const Task = sequelize.define("tasks", {
         title: {
             type: Sequelize.STRING,
         },
@@ -14,6 +14,14 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN,
             defaultValue: false
         }
-    }); 
+    });
+
+    Task.associate = models =>{
+        Task.belongsTo(models.user,{
+            onDelete: "CASCADE",
+            foreingKey: "id",
+            as: "users",
+        });
+    };
     return Task;
 };

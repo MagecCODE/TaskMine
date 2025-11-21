@@ -25,7 +25,7 @@
   <ion-card 
   class="task-form-card">
     <ion-card-header>
-      <ion-card-title class="car-tittle">{{ isEditMode ? 'Actualizar Task' : 'Nueva Task' }}</ion-card-title>
+      <ion-card-title class="card-tittle">{{ isEditMode ? 'Actualizar Task' : 'Nueva Task' }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="card-content">
 
@@ -59,7 +59,7 @@
           <ion-input formControlName="priority" type="number" placeholder="Priority"></ion-input>
         -->
         </ion-item>
-        <ion-note color="danger" *ngIf="taskForm.get('priority')?.touched && taskForm.get('priority')?.hasError('required')">
+        <ion-note color="danger" *ngIf="taskForm.get('priority')?.valid && taskForm.get('priority')?.hasError('required')">
           Priority is required
         </ion-note> 
 

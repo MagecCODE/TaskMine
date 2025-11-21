@@ -1,3 +1,10 @@
+<!-- Spinner Loading to user feedback -->
+<ion-content *ngIf="loading" class="ion-text-center ion-align-items-center">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-content>
+
+<!-- General container from Angular -->
+<ng-container *ngIf="!loading" >
 <ion-header [translucent]="true">
   <ion-toolbar>  
     <ion-grid>
@@ -17,7 +24,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  [fullscreen]="true">
+<ion-content  [fullscreen]="true" *ngIf="!loading">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">TaskMine</ion-title>
@@ -38,3 +45,4 @@
       </ion-fab-button>
   </ion-fab>
 </ion-content>
+</ng-container>

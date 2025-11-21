@@ -1,5 +1,7 @@
 import { Component, AfterViewInit} from '@angular/core';
-
+import { Storage } from '@ionic/storage-angular';
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,6 +9,8 @@ import { Component, AfterViewInit} from '@angular/core';
   standalone: false,
 })
 export class AppComponent implements AfterViewInit{
+  
+  user:any ={};
 
   // Inert attribute to hidden pages for accessibility
   ngAfterViewInit() {
@@ -23,5 +27,33 @@ export class AppComponent implements AfterViewInit{
     observer.observe(document.body, { attributes: true, subtree: true });
     });
   }
-  constructor() {}
-}
+
+  
+  constructor(private storage: Storage, private authService : AuthService, private router: Router) {
+    this.initStorage();
+    this.initUser();
+  };
+
+  async initUser(){
+    await this.initStorage();
+    this
+  };
+
+  async initStorage() {
+    await this.storage.create();
+    this.user = await this.storage.get("user");
+  };
+  
+  //Logout
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigateByUrl("/login");
+    });
+  };
+
+  // Capitaliza Title Menu
+  myCapitalize(str: string) : string {
+    if (!str) return str; 
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+};

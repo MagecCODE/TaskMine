@@ -1,3 +1,4 @@
 export const config ={
-    apiUrl : 'http://localhost:8080/api'
+    apiURL : 'http://localhost:8080/api/tasks',
+    authURL : 'http://localhost:8080/api/users'
 };
